@@ -28,3 +28,7 @@ You can submit issues and prs to help, keep the following in mind though:
 - Don't delete procedures without a valid reason
 - Preferably create new branches based off main, rebase them and then submit those as prs
 - Preferably create a proposal issue to first to see if your feature would get accepted
+
+## Credits
+
+- Godot for the gradient sampling code: https://github.com/godotengine/godot
