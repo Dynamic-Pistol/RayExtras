@@ -1,5 +1,7 @@
 package extra
 
+//This contains procs to help with setting and getting rect parts
+
 import rl "vendor:raylib"
 
 //Gets the left center of the rectangle

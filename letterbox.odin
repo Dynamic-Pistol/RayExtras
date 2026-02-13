@@ -1,7 +1,10 @@
 package extra
 
+//LetterBox for constant game size regardless of window size
+
 import rl "vendor:raylib"
 
+//Draws the render texture and scales the mouse
 DrawGameLetterBox :: proc(gameScreen: rl.RenderTexture) {
 	screenWidth, screenHeight := f32(rl.GetScreenWidth()), f32(rl.GetScreenHeight())
 	gameWidth, gameHeight := f32(gameScreen.texture.width), f32(gameScreen.texture.height)

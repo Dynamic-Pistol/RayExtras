@@ -1,5 +1,7 @@
 package extra
 
+//Gradient to get colors lineraly or constantly based off a sample point
+
 import m "core:math"
 import rl "vendor:raylib"
 
@@ -9,9 +11,12 @@ ColorPoint :: struct {
 	offset: f32,
 }
 
+//A collection of colors and points to represent a gradient
 //Create via `make(Gradient)`, destroy via `delete`
+//Append ColorPoints and make sure the offsets are in order!
 Gradient :: distinct [dynamic]ColorPoint
 
+//Samples gradient linearly, resulting in blended colors
 GradientSampleLinear :: proc(grad: Gradient, samplePoint: f32) -> rl.Color {
 	low, middle := 0, 0
 	high := len(grad) - 1
@@ -53,7 +58,7 @@ GradientSampleLinear :: proc(grad: Gradient, samplePoint: f32) -> rl.Color {
 	return interpolated
 }
 
-
+//Samples gradient linearly, resulting in an instant single color
 GradientSampleConstant :: proc(grad: Gradient, samplePoint: f32) -> rl.Color {
 	low, middle := 0, 0
 	high := len(grad) - 1

@@ -1,9 +1,12 @@
 package extra
 
+//Extra drawing procs to aid in development
+
 import "core:log"
 import rl "vendor:raylib"
 import rgl "vendor:raylib/rlgl"
 
+//Draws a centered texture, doesn't use DrawTexturePro
 DrawTextureCentered :: proc(texture: rl.Texture, position: rl.Vector2, tint: rl.Color) {
 	if texture.id == 0 {
 		log.errorf("Invalid Texture!")
@@ -12,8 +15,6 @@ DrawTextureCentered :: proc(texture: rl.Texture, position: rl.Vector2, tint: rl.
 
 	width := f32(texture.width)
 	height := f32(texture.height)
-
-	// Only calculate rotation if needed
 
 	rgl.SetTexture(texture.id)
 	rgl.Begin(rgl.QUADS)
@@ -41,7 +42,8 @@ DrawTextureCentered :: proc(texture: rl.Texture, position: rl.Vector2, tint: rl.
 
 }
 
-DrawTextureAtlased :: proc(
+//Draws a centered texture with a source from a texture atlas
+DrawTextureCenteredAtlased :: proc(
 	texture: rl.Texture,
 	source: rl.Rectangle,
 	position: rl.Vector2,
@@ -54,8 +56,6 @@ DrawTextureAtlased :: proc(
 
 	width := f32(texture.width)
 	height := f32(texture.height)
-
-	// Only calculate rotation if needed
 
 	rgl.SetTexture(texture.id)
 	rgl.Begin(rgl.QUADS)
@@ -80,5 +80,9 @@ DrawTextureAtlased :: proc(
 
 	rgl.End()
 	rgl.SetTexture(0)
+}
 
+//Basically 'DrawTexturePro' but with parameter defaults
+DrawTextureOptions :: proc(texture: rl.Texture2D, source, dest: rl.Rectangle, origin: rl.Vector2 = {}, rotation: f32 = 0, tint: rl.Color = rl.WHITE) {
+	rl.DrawTexturePro(texture, source, dest, origin, rotation, tint)
 }
