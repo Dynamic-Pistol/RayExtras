@@ -1,4 +1,4 @@
-package help
+package extra
 
 import "core:c"
 import "core:strings"
@@ -6,13 +6,12 @@ import "core:fmt"
 import "core:log"
 import rl "vendor:raylib"
 
-create_raylib_logger :: proc(
-    allocator := context.allocator,
-) -> log.Logger {
+CreateRaylibLogger :: proc() -> log.Logger {
     rl.SetTraceLogLevel(.ALL)
     return {data = nil, lowest_level = .Debug, options = {}, procedure = raylib_logger_proc}
 }
 
+@(private)
 raylib_logger_proc :: proc(
     logger_data: rawptr,
     level: log.Level,
