@@ -4,7 +4,7 @@ import "core:log"
 import rl "vendor:raylib"
 import rgl "vendor:raylib/rlgl"
 
-DrawTexture :: proc(texture: rl.Texture, position: rl.Vector2, tint: rl.Color) {
+DrawTextureCentered :: proc(texture: rl.Texture, position: rl.Vector2, tint: rl.Color) {
 	if texture.id == 0 {
 		log.errorf("Invalid Texture!")
         return
