@@ -42,6 +42,40 @@ DrawTextureCentered :: proc(texture: rl.Texture, position: rl.Vector2, tint: rl.
 
 }
 
+DrawTextureFlippedHorizontal :: proc(texture: rl.Texture, position: rl.Vector2, tint: rl.Color) {
+	if texture.id == 0 {
+		log.errorf("Invalid Texture!")
+		return
+	}
+
+	width := f32(texture.width)
+	height := f32(texture.height)
+
+	rgl.SetTexture(texture.id)
+	rgl.Begin(rgl.QUADS)
+
+	rgl.Color4f(f32(tint.r) / 255, f32(tint.g) / 255, f32(tint.b) / 255, f32(tint.a) / 255)
+
+	// Top-left corner for texture and quad
+	rgl.TexCoord2f(1, 0)
+	rgl.Vertex2f(position.x - width / 2, position.y - height / 2)
+
+	// Bottom-left corner for texture and quad
+	rgl.TexCoord2f(1, 1)
+	rgl.Vertex2f(position.x - width / 2, position.y + height / 2)
+
+	// Bottom-right corner for texture and quad
+	rgl.TexCoord2f(0, 1)
+	rgl.Vertex2f(position.x + width / 2, position.y + height / 2)
+
+	// Top-right corner for texture and quad
+	rgl.TexCoord2f(0, 0)
+	rgl.Vertex2f(position.x + width / 2, position.y - height / 2)
+
+	rgl.End()
+	rgl.SetTexture(0)
+}
+
 //Draws a centered texture with a source from a texture atlas
 DrawTextureCenteredAtlased :: proc(
 	texture: rl.Texture,
