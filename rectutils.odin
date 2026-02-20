@@ -1,66 +1,78 @@
 package extra
 
+import "core:log"
 //This contains procs to help with setting and getting rect parts
 
 import rl "vendor:raylib"
 
-//Gets the left center of the rectangle
-RectGetLeft :: proc(rect: rl.Rectangle) -> rl.Vector2 {
-	x := rect.x
-	return {x, 0}
+RectPartX :: enum u8 {
+	None,
+	Left,
+	Right,
+	Center,
 }
 
-//Sets the left of the rectangle
-RectSetLeft :: proc(rect: ^rl.Rectangle, position: rl.Vector2) {
-	rect.x = position.x
+RectPartY :: enum u8 {
+	None,
+	Top,
+	Bottom,
+	Center,
 }
 
-//Gets the right center of the rectangle
-RectGetRight :: proc(rect: rl.Rectangle) -> rl.Vector2 {
-	x := rect.x + rect.width
-	return {x, 0}
+RectGetPart :: proc(rect: rl.Rectangle, xPart: RectPartX, yPart: RectPartY) -> rl.Vector2 {
+
+	position := rl.Vector2{}
+
+	switch xPart {
+	case .None:
+	case .Left:
+		position.x = rect.x
+	case .Right:
+		position.x = rect.x + rect.width
+	case .Center:
+		position.x = (rect.x + rect.width) / 2
+	}
+
+	switch yPart {
+	case .None:
+	case .Top:
+		position.y = rect.y
+	case .Bottom:
+		position.y = rect.y + rect.height
+	case .Center:
+		position.y = (rect.y + rect.height) / 2
+
+	}
+
+	return position
 }
 
-//Sets the right of the rectangle
-RectSetRight :: proc(rect: ^rl.Rectangle, position: rl.Vector2) {
-	rect.x = position.x - rect.width
-}
+RectSetPart :: proc(
+	rect: ^rl.Rectangle,
+	xPart: RectPartX,
+	yPart: RectPartY,
+	position: rl.Vector2,
+) {
 
-//Gets the top center of the rectangle
-RectGetTop :: proc(rect: rl.Rectangle) -> rl.Vector2 {
-	// x := rect.x + rect.width / 2
-	y := rect.y
-	return {0, y}
-}
+	switch xPart {
+	case .None:
+	case .Left:
+		rect.x = position.x
+	case .Right:
+		rect.x = position.x - rect.width
+	case .Center:
+		rect.x = position.x - (rect.width / 2)
+	}
 
-//Sets the top of the rectangle
-RectSetTop :: proc(rect: ^rl.Rectangle, position: rl.Vector2) {
-	rect.y = position.y
-}
+	switch yPart {
+	case .None:
+	case .Top:
+		rect.y = position.y
+	case .Bottom:
+		rect.y = position.y - rect.height
+	case .Center:
+		rect.y = position.y - (rect.height / 2)
 
-//Gets the bottom center of the rectangle
-RectGetBottom :: proc(rect: rl.Rectangle) -> rl.Vector2 {
-	y := rect.y + rect.height
-	return {0, y}
-}
+	}
 
-//Sets the bottom of the rectangle
-RectSetBottom :: proc(rect: ^rl.Rectangle, position: rl.Vector2) {
-	rect.y = position.y - rect.height
-}
-
-GetCenterX :: proc(rect: rl.Rectangle) -> rl.Vector2 {
-	x := (rect.x + rect.width) / 2
-	return {x, 0}
-}
-
-GetCenterY :: proc(rect: rl.Rectangle) -> rl.Vector2 {
-	y := (rect.y + rect.height) / 2
-	return {0, y}
-}
-
-GetCenter :: proc(rect: rl.Rectangle) -> rl.Vector2 {
-	x := (rect.x + rect.width) / 2
-	y := (rect.y + rect.height) / 2
-	return {x, y}
 }
