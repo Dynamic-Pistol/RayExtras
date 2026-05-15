@@ -1,6 +1,5 @@
-package extra
-
 //LetterBox for constant game size regardless of window size
+package extra
 
 import rl "vendor:raylib"
 

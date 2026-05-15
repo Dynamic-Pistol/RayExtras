@@ -72,7 +72,6 @@ RectSetPart :: proc(
 		rect.y = position.y - rect.height
 	case .Center:
 		rect.y = position.y - (rect.height / 2)
-
 	}
 
 }

@@ -5,13 +5,15 @@ Rayextras is a package to speed up game development and add useful utilities to 
 ## Includes
 
 - Drawing utilities
-- Rectanlge utilities
+- Rectangle utilities
 - Gradients
 - Input maps based on enum arrays
+- Input utilites
 - Raylib logger to Odin logger
 - LetterBox
 - Preloading assets and embedding them into binary
-
+- Timers
+- Pause helper
 
 ## Usage
 
