@@ -1,6 +1,2 @@
-test_rect
-test_tilemap
-ui_test
-ui.odin
 physics.odin
 ols.json
