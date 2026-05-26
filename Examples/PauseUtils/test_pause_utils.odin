@@ -7,7 +7,7 @@ import rl "vendor:raylib"
 FONT_SIZE :: 20
 
 main :: proc() {
-	rl.InitWindow(600, 600, "Test rectangle")
+	rl.InitWindow(600, 600, "Test Pausing")
 	defer rl.CloseWindow()
 
     totalTime: f32

@@ -7,7 +7,7 @@ TOOLTIP_TEXT :: "This is a tooltip!"
 FONT_SIZE :: 20
 
 main :: proc() {
-	rl.InitWindow(600, 600, "Test rectangle")
+	rl.InitWindow(600, 600, "Test Rectangle Utils")
 	defer rl.CloseWindow()
 
 	textWidth := rl.MeasureText(TOOLTIP_TEXT, FONT_SIZE)

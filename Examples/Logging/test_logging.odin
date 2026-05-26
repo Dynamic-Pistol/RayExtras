@@ -6,7 +6,7 @@ import rl "vendor:raylib"
 
 
 main :: proc() {
-	rl.InitWindow(600, 600, "Test rectangle")
+	rl.InitWindow(600, 600, "Test Logging")
 	defer rl.CloseWindow()
 
     context.logger = ex.CreateRaylibLogger()

@@ -6,7 +6,7 @@ import rl "vendor:raylib"
 
 main :: proc() {
     rl.SetConfigFlags({.WINDOW_RESIZABLE})
-	rl.InitWindow(600, 600, "Test rectangle")
+	rl.InitWindow(600, 600, "Test Letterbox")
 	defer rl.CloseWindow()
 
     testTexture := rl.LoadTexture("background.png")

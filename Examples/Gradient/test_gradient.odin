@@ -8,7 +8,7 @@ RECT_SIZE :: 600
 FONT_SIZE :: 40
 
 main :: proc() {
-	rl.InitWindow(600, 600, "Test rectangle")
+	rl.InitWindow(600, 600, "Test Gradient")
 	defer rl.CloseWindow()
 
 	gradient: ex.Gradient
