@@ -30,7 +30,7 @@ RectGetPart :: proc(rect: rl.Rectangle, xPart: RectPartX, yPart: RectPartY) -> r
 	case .Right:
 		position.x = rect.x + rect.width
 	case .Center:
-		position.x = (rect.x + rect.width) / 2
+		position.x = rect.x + rect.width / 2
 	}
 
 	switch yPart {
@@ -40,7 +40,7 @@ RectGetPart :: proc(rect: rl.Rectangle, xPart: RectPartX, yPart: RectPartY) -> r
 	case .Bottom:
 		position.y = rect.y + rect.height
 	case .Center:
-		position.y = (rect.y + rect.height) / 2
+		position.y = rect.y + rect.height / 2
 
 	}
 
@@ -61,7 +61,7 @@ RectSetPart :: proc(
 	case .Right:
 		rect.x = position.x - rect.width
 	case .Center:
-		rect.x = position.x - (rect.width / 2)
+		rect.x = position.x - rect.width / 2
 	}
 
 	switch yPart {
@@ -71,7 +71,7 @@ RectSetPart :: proc(
 	case .Bottom:
 		rect.y = position.y - rect.height
 	case .Center:
-		rect.y = position.y - (rect.height / 2)
+		rect.y = position.y - rect.height / 2
 	}
 
 }
