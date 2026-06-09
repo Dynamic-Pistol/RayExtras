@@ -6,8 +6,8 @@ import rl "vendor:raylib"
 //Embeds a texture into your binary
 @(require_results)
 PreLoadTexture :: proc($imagePath: string, format: cstring = ".png") -> rl.Texture {
-	DATA := #load(imagePath)
-	image := rl.LoadImageFromMemory(format, raw_data(DATA), i32(len(DATA)))
+	data := #load(imagePath)
+	image := rl.LoadImageFromMemory(format, raw_data(data), i32(len(data)))
 	rl.LoadTextureFromImage(image)
 	texture := rl.LoadTextureFromImage(image)
 	rl.UnloadImage(image)
@@ -17,14 +17,14 @@ PreLoadTexture :: proc($imagePath: string, format: cstring = ".png") -> rl.Textu
 //Embeds music into your binary
 @(require_results)
 PreLoadMusic :: proc($imagePath: string, format: cstring = ".wav") -> rl.Music {
-	DATA := #load(imagePath)
-	music := rl.LoadMusicStreamFromMemory(format, raw_data(DATA), i32(len(DATA)))
+	data := #load(imagePath)
+	music := rl.LoadMusicStreamFromMemory(format, raw_data(data), i32(len(data)))
 	return music
 }
 
 //Embeds a font into your binary
 PreLoadFont :: proc($imagePath: string, format: cstring = ".ttf", size: i32 = 20) -> rl.Font {
-	DATA := #load(imagePath)
-	font := rl.LoadFontFromMemory(format, raw_data(DATA), i32(len(DATA)), size, nil, 0)
+	data := #load(imagePath)
+	font := rl.LoadFontFromMemory(format, raw_data(data), i32(len(data)), size, nil, 0)
 	return font
 }
