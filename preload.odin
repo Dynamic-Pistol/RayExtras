@@ -16,15 +16,15 @@ PreLoadTexture :: proc($imagePath: string, format: cstring = ".png") -> rl.Textu
 
 //Embeds music into your binary
 @(require_results)
-PreLoadMusic :: proc($imagePath: string, format: cstring = ".wav") -> rl.Music {
-	data := #load(imagePath)
+PreLoadMusic :: proc($musicPath: string, format: cstring = ".wav") -> rl.Music {
+	data := #load(musicPath)
 	music := rl.LoadMusicStreamFromMemory(format, raw_data(data), i32(len(data)))
 	return music
 }
 
 //Embeds a font into your binary
-PreLoadFont :: proc($imagePath: string, format: cstring = ".ttf", size: i32 = 20) -> rl.Font {
-	data := #load(imagePath)
+PreLoadFont :: proc($fontPath: string, format: cstring = ".ttf", size: i32 = 20) -> rl.Font {
+	data := #load(fontPath)
 	font := rl.LoadFontFromMemory(format, raw_data(data), i32(len(data)), size, nil, 0)
 	return font
 }
