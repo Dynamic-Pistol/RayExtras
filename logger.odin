@@ -20,7 +20,7 @@ _raylib_logger_proc :: proc(
 	location := #caller_location,
 ) {
 	@(static, rodata)
-	odinLevelToRayLibLevel := #sparse[log.Level]rl.TraceLogLevel {
+	odinLevelToRayLibLevel := [log.Level]rl.TraceLogLevel {
 		.Debug   = .DEBUG,
 		.Info    = .INFO,
 		.Warning = .WARNING,
