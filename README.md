@@ -14,6 +14,7 @@ Rayextras is a package to speed up game development and add useful utilities to 
 - Preloading assets and embedding them into binary
 - Timers
 - Pause helper
+- ImGui based off [RayGuiPainter](https://github.com/mdavisprog/rayguipainter/tree/main)
 
 ## Usage
 
